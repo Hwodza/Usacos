@@ -8,7 +8,8 @@ LANG: JAVA
 //GROUP                     : AdvCS
 //LAST MODIFIED             : November 22, 2021
 //PROBLEM ID                : USACO Mother's Milk, determines what amounts of milk he can leave in
-//                            bucket C when he begins with three buckets, pours milk among the buckets for a while, and then notes that bucket A is empty.
+//                            bucket C when he begins with three buckets, pours milk among the 
+//                            buckets for a while, and then notes that bucket A is empty.
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 import java.util.ArrayList;
