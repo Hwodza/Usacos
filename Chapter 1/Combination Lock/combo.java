@@ -7,7 +7,8 @@ LANG: JAVA
 //NAME                      : Henry Odza
 //GROUP                     : AdvCS
 //LAST MODIFIED             : November 11, 2021
-//PROBLEM ID                : USACO Combination Lock, given a combination lock find all possible "mistake" pairing that would unlock it
+//PROBLEM ID                : USACO Combination Lock, given a combination lock find all possible
+//                          : "mistake" pairings that would unlock it
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 import java.util.*;
