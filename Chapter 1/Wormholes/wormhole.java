@@ -7,7 +7,7 @@ LANG: JAVA
 //NAME                      : Henry Odza
 //GROUP                     : AdvCS
 //LAST MODIFIED             : November 21, 2021
-//PROBLEM ID                : USACO Wormhole
+//PROBLEM ID                : USACO Wormhole, helps Farmer John count the number of distinct pairings of the wormholes that Bessie could possibly get trapped in
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 
