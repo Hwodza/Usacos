@@ -7,7 +7,7 @@ LANG: JAVA
 //NAME                      : Henry Odza
 //GROUP                     : AdvCS
 //LAST MODIFIED             : November 21, 2021
-//PROBLEM ID                : USACO Ski Course Design, Helping Farmer John commit tax fraud.
+//PROBLEM ID                : USACO Ski Course Design, Helping Farmer John commit tax fraud by figruing out the most optimal heights of his hills.
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 
