@@ -88,21 +88,7 @@ public class pprime
         {
             out.println(palindromes.get(i));
         }
-        /*
-        if(min%2 == 0)
-        {
-            min++;
-        }
-        for(int i=min; i<=max; i+=2)
-        {
-            if(isPrime(i))
-            {
-                if(isPalin(i))
-                {
-                    out.println(i);
-                }
-            }
-        }*/
+        
         in.close();
         out.close();
     }
@@ -146,14 +132,6 @@ public class pprime
                 }
             }
         }
-        /*
-        for(int i=0; i<x; i++)
-        {
-            if(str.charAt(x-1-i) != str.charAt(i))
-            {
-                return false;
-            }
-        }*/
         return true;
     }
 }
