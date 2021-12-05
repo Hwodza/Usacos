@@ -7,7 +7,7 @@ LANG: JAVA
 //NAME                      : Henry Odza
 //GROUP                     : APCS
 //LAST MODIFIED             : March 19, 2021
-//PROBLEM ID                : USACO numtri
+//PROBLEM ID                : USACO numtri, finds highest sum of a path in a tree
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 
