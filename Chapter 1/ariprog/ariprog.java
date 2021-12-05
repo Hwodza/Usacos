@@ -7,7 +7,7 @@ LANG: JAVA
 //NAME                      : Henry Odza
 //GROUP                     : AdvCS
 //LAST MODIFIED             : June 5, 2021
-//PROBLEM ID                : USACO Ariprog, Find a sequence of bisqaures, then figure out what sequences of a and b in a+nb equal one of the bisquares(I think, I still don't really understand this problem)
+//PROBLEM ID                : USACO Ariprog, Find a sequence of bisqaures, then figure out what sequences of a and b in a+nb equal one of the bisquares
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 import java.util.ArrayList;
