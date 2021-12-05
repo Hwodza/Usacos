@@ -49,31 +49,7 @@ public class sprime
                     nums.add(x);
                 }
             }
-            /*
-            int x = dynamic.get(i)*10 + 2;
-            if(isPrime(x))
-            {
-                nums.add(x);
-            }
-            x = dynamic.get(i)*10 + 3;
-            if(isPrime(x))
-            {
-                nums.add(x);
-            }
-            x = dynamic.get(i)*10 + 5;
-            if(isPrime(x))
-            {
-                nums.add(x);
-            }
-            x = dynamic.get(i)*10 + 7;
-            if(isPrime(x))
-            {
-                System.out.println("agh");
-                nums.add(x);
-            }
-            */
         }
-        //System.out.println(nums.size());
         n++;
         if(n == max)
         {
