@@ -9,7 +9,6 @@ LANG: JAVA
 //LAST MODIFIED             : March 19, 2021
 //PROBLEM ID                : USACO numtri, finds highest sum of a path in a tree
 //SOURCES/HELPERS/HELPED    : Mr.H
-
 import java.io.*;
 
 public class numtri
