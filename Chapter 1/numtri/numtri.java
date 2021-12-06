@@ -9,6 +9,7 @@ LANG: JAVA
 //LAST MODIFIED             : March 19, 2021
 //PROBLEM ID                : USACO numtri, finds highest sum of a path in a tree
 //SOURCES/HELPERS/HELPED    : Mr.H
+
 import java.io.*;
 
 public class numtri
@@ -49,6 +50,7 @@ public class numtri
             //Find the two neighboring points
             int num1 = search(numRows, triangle, output, i+1, j);
             int num2 = search(numRows, triangle, output, i+1, j+1);
+            
             //Determines which one is bigger for sum
             if(num1 > num2)
             {
@@ -56,6 +58,7 @@ public class numtri
             }else{
                 output[i][j] = num2 + triangle[i][j];
             }
+            
             //Returns sum
             return output[i][j];
         }else{
