@@ -7,7 +7,8 @@ LANG: JAVA
 //NAME                      : Henry Odza
 //GROUP                     : APCS
 //LAST MODIFIED             : March 19, 2021
-//PROBLEM ID                : USACO Prime Palindromes, finds all palindromes that are also prime numbers with two integers a and b
+//PROBLEM ID                : USACO Prime Palindromes, finds all palindromes that are also prime
+//                          : numbers with two integers a and b
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 import java.util.ArrayList;
