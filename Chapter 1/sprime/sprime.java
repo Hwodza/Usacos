@@ -7,7 +7,7 @@ LANG: JAVA
 //NAME                      : Henry Odza
 //GROUP                     : APCS
 //LAST MODIFIED             : March 19, 2021
-//PROBLEM ID                : USACO Superprime Rib
+//PROBLEM ID                : USACO Superprime Rib, given a string of numbers determine if it is a superprime (each subset from the right is prime)
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
 import java.util.ArrayList;
