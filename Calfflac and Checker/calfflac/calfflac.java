@@ -34,13 +34,32 @@ class Main {
 			}
 		}
 		int x = 0, y = 1;
-		while(x < let.size()-2)
+		while(x < let.size()-2 && y < let.size()-1)
 		{
-			x++;
+			if(good.get(x) == true && good.get(y) == true)
+			{
+				if(let2.get(x) == let2.get(y))
+				{
+					equal.add(true);
+				}else{
+					equal.add(false);
+				}
+				x=y;
+				y++;
+			}else{
+				y++;
+			}
 		}
 
-
-		out.print("Hello");
+		x = 0;
+		for(int i=0; i<let2.size()-1; i++)
+		{
+			if(good.get(i) == true)
+			{
+				
+			}
+		}
+		
 		in.close();
 		out.close();
 		System.exit(0);
