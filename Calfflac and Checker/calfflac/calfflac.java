@@ -22,7 +22,7 @@ class Main {
 			}
 		}
 
-		
+		out.print("Hello");
 		in.close();
 		out.close();
 		System.exit(0);
