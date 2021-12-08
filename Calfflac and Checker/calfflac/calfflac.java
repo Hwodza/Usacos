@@ -3,6 +3,13 @@ ID: hwodza1
 TASK: calfflac
 LANG: JAVA
 */
+
+//NAME                      : Henry Odza
+//GROUP                     : AdvCS
+//LAST MODIFIED             : December 8, 2021
+//PROBLEM ID                : USACO calfflack finds palindromes in a very long series of strings
+//SOURCES/HELPERS/HELPED    : Mr.H
+
 import java.io.*;
 import java.util.*;
 class Main {
@@ -12,8 +19,11 @@ class Main {
 	public static ArrayList<Boolean> equal = new ArrayList<Boolean>();
 	public static ArrayList<Boolean> good = new ArrayList<Boolean>();
 	public static void main(String[] args) throws IOException {
+		//Creates input and output files
 		BufferedReader in = new BufferedReader(new FileReader("calfflac.in"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("calfflac.out")));
+		
+		//Reads in data and puts it into two arrays, original, and lowercase
 		String str = "";
 		while((str = in.readLine()) != null)
 		{
@@ -33,6 +43,8 @@ class Main {
 				}
 			}
 		}
+
+		//Finds all pairs of equals
 		int x = 0, y = 1;
 		while(x < let.size()-2 && y < let.size()-1)
 		{
@@ -54,9 +66,13 @@ class Main {
 		x = 0;
 		for(int i=0; i<let2.size()-1; i++)
 		{
-			if(good.get(i) == true)
+			if(good.get(i) == true && equal.get(x) == true)
 			{
-				
+				int a = 0, b = 0;
+				while(let2.size()-i-1-a >= 0 && i+b < let2.size()-1)
+				{
+
+				}
 			}
 		}
 		
