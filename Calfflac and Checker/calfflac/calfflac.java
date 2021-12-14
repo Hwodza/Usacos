@@ -44,6 +44,7 @@ class Main {
 			}
 		}
 
+		
 		//Finds all pairs of equals
 		int x = 0, y = 1;
 		while(x < let.size()-2 && y < let.size()-1)
