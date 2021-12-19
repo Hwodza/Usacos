@@ -5,6 +5,7 @@ public class lonely {
     {
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
+        scan.nextLine();
         String str = scan.nextLine();
         char[] arr = new char[n];
         int total = 0;
@@ -12,13 +13,40 @@ public class lonely {
         {
             arr[i] = str.charAt(i);
         }
-        for(int i=0; i<n-3; i++)
+        
+        for(int i=n-2; i>=3; i--)
         {
-            if(!(arr[i] == arr[i+1] && arr[i+2] == arr[i+1]))
+            boolean flag2 = true;
+            int g = 0, h = 0;
+            for(int j=0; j<n; j++)
             {
-                total++;
+                boolean flag = false;
+                for(int k=0; k<i; k++)
+                {
+                    if(arr[j+k] == 'G')
+                    {
+                        g++;
+                    }else{
+                        h++;
+                    }
+                    if(g > 1 && h > 1)
+                    {
+                        flag = true;
+                        break;
+                    }     
+                    if(!flag)
+                    {
+                        total++;
+                        flag2 = false;
+                    }  
+                }     
+                if(flag2)
+                {
+                    break;
+                }
             }
         }
+
         System.out.println(total);
         scan.close();
     }
