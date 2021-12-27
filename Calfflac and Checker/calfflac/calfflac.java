@@ -12,11 +12,10 @@ LANG: JAVA
 
 import java.io.*;
 import java.util.*;
-class Main {
+public class calfflac {
 	public static ArrayList<Character> let = new ArrayList<Character>();
 	public static ArrayList<Character> let2 = new ArrayList<Character>();
 	public static ArrayList<Integer> index = new ArrayList<Integer>();
-	public static ArrayList<Boolean> equal = new ArrayList<Boolean>();
 	public static ArrayList<Boolean> good = new ArrayList<Boolean>();
 	public static void main(String[] args) throws IOException {
 		//Creates input and output files
@@ -45,37 +44,7 @@ class Main {
 		}
 
 		
-		//Finds all pairs of equals
-		int x = 0, y = 1;
-		while(x < let.size()-2 && y < let.size()-1)
-		{
-			if(good.get(x) == true && good.get(y) == true)
-			{
-				if(let2.get(x) == let2.get(y))
-				{
-					equal.add(true);
-				}else{
-					equal.add(false);
-				}
-				x=y;
-				y++;
-			}else{
-				y++;
-			}
-		}
 
-		x = 0;
-		for(int i=0; i<let2.size()-1; i++)
-		{
-			if(good.get(i) == true && equal.get(x) == true)
-			{
-				int a = 0, b = 0;
-				while(let2.size()-i-1-a >= 0 && i+b < let2.size()-1)
-				{
-
-				}
-			}
-		}
 		
 		in.close();
 		out.close();

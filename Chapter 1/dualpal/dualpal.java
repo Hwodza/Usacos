@@ -10,7 +10,6 @@ LANG: JAVA
 //PROBLEM ID                : USACO Dual Palindromes
 //SOURCES/HELPERS/HELPED    : Mr.H
 import java.io.*;
-import java.util.*;
 
 public class dualpal
 {
