@@ -21,25 +21,37 @@ public class sprime
         //Creates input and output files
         BufferedReader in = new BufferedReader(new FileReader("sprime.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("sprime.out")));
+        
+        //Reads in data
         int n = Integer.parseInt(in.readLine());
+        
+        //Creates prime number arraylist
         ArrayList<Integer> nums = new ArrayList<Integer>();
+        //Adds single digit prime numbers
         nums.add(2);
         nums.add(3);
         nums.add(5);
         nums.add(7);
+        
+        //Calls sprimes method and makes arraylist the output
         nums = sprimes(nums, 1, n);
+        
+        //Outputs all sprimes
         for(int i=0; i<nums.size(); i++)
         {
-            System.out.println((nums.get(i)));
             out.println(nums.get(i));
         }
         in.close();
         out.close();
     }
+    
+    //Method for finding sprimes
     public static ArrayList<Integer> sprimes(ArrayList<Integer> dynamic, int n, int max)
     {
+        //Creates new arraylist
         ArrayList<Integer> nums = new ArrayList<Integer>();
-        System.out.println(dynamic.size());
+        
+        //Goes through add sees if each new number keeps the sprimes sprimey
         for(int i=0; i<dynamic.size(); i++)
         {
             for(int j=1; j<10; j+=2)
@@ -52,6 +64,8 @@ public class sprime
             }
         }
         n++;
+        
+        //Checks to see if sprime length has been reached
         if(n == max)
         {
             return nums;
@@ -60,7 +74,8 @@ public class sprime
         }
         return nums;
     }
-
+    
+    //Method for checking if a number is prime
     public static boolean isPrime(int n)
     {
         if(n%2 == 0)
