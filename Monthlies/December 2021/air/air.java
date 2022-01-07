@@ -1,7 +1,7 @@
 //NAME                      : Henry Odza
 //GROUP                     : AdvCS
 //LAST MODIFIED             : December 18, 2021
-//PROBLEM ID                : USACO Lonely Cows
+//PROBLEM ID                : USACO air
 //SOURCES/HELPERS/HELPED    : Mr.H
 
 import java.util.Scanner;
