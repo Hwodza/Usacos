@@ -12,86 +12,25 @@ public class lonely {
         int n = scan.nextInt();
         scan.nextLine();
         String str = scan.nextLine();
-        char[] arr = new char[n];
-        boolean[] visited = new boolean[n];
-        boolean[] falsePos = new boolean[n];
-        boolean[] falsePos2 = new boolean[n];
-        
-        int total = 0;
-        for(int i=0; i<n; i++)
+        int count = 0;
+        for(int i=0; i<str.length(); i++)
         {
-            arr[i] = str.charAt(i);
-        }
-        
-        for(int i=3; i<=n-2; i++)
-        {
-            boolean flag2 = true;
-            
-            for(int j=0; j<=n-i; j++)
+            int g=0, h=0;
+            for(int j=i; j<str.length(); j++)
             {
-                /*
-                if(visited[j] == true)
+                if(str.charAt(j) == 'G')
                 {
-                    continue;
+                    g++;
+                }else{
+                    h++;
                 }
-                if(falsePos[j] == true)
+                if(g+h >=3 && (g==1 || h==1))
                 {
-                    if(falsePos2[j] == true)
-                    {
-                        if(arr[j+i-1] != arr[j])
-                        {
-                            falsePos2[j] = false;
-                            falsePos[j] = false;
-                            visited[j] = true;
-                        }
-                        continue;
-                    }
-                    if(arr[j+i-1] != arr[j])
-                    {
-                        falsePos2[j] = true;
-                        total++;
-                    }
-                    continue;
+                    count++;
                 }
-                */
-                
-                int g = 0, h = 0;
-                boolean flag = false;
-                for(int k=0; k<i; k++)
-                {
-                    if(arr[j+k] == 'G')
-                    {
-                        g++;
-                    }else{
-                        h++;
-                    }
-                    if(g > 1 && h > 1)
-                    {
-                        flag = true;
-                        break;
-                    }      
-                } 
-                if(g > 2 && h == 0 ||  h > 2 && g == 0)
-                {
-                    flag = true;
-                    falsePos[j] = true;
-                }
-                if(!flag)
-                {
-                    total++;
-                    flag2 = false;
-                }else if(falsePos[j] == false){
-                    visited[j] = true;
-                }     
-                
-            }
-            if(flag2)
-            {
-                break;
             }
         }
-
-        System.out.println(total);
+        System.out.println(count);
         scan.close();
     }
     
