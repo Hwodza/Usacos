@@ -1,3 +1,8 @@
+//NAME                      : Henry Odza
+//GROUP                     : AdvCS
+//LAST MODIFIED             : December 18, 2021
+//PROBLEM ID                : USACO Lonely Photos
+//SOURCES/HELPERS/HELPED    : Mr.H
 import java.util.Scanner;
 
 public class lonely {
