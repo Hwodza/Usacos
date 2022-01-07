@@ -1,3 +1,9 @@
+//NAME                      : Henry Odza
+//GROUP                     : AdvCS
+//LAST MODIFIED             : December 18, 2021
+//PROBLEM ID                : USACO Lonely Cows
+//SOURCES/HELPERS/HELPED    : Mr.H
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
