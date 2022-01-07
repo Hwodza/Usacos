@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class lonely {
     public static void main(String[] args)
@@ -8,18 +8,49 @@ public class lonely {
         scan.nextLine();
         String str = scan.nextLine();
         char[] arr = new char[n];
+        boolean[] visited = new boolean[n];
+        boolean[] falsePos = new boolean[n];
+        boolean[] falsePos2 = new boolean[n];
+        
         int total = 0;
         for(int i=0; i<n; i++)
         {
             arr[i] = str.charAt(i);
         }
         
-        for(int i=n-2; i>=3; i--)
+        for(int i=3; i<=n-2; i++)
         {
             boolean flag2 = true;
-            int g = 0, h = 0;
-            for(int j=0; j<n; j++)
+            
+            for(int j=0; j<=n-i; j++)
             {
+                /*
+                if(visited[j] == true)
+                {
+                    continue;
+                }
+                if(falsePos[j] == true)
+                {
+                    if(falsePos2[j] == true)
+                    {
+                        if(arr[j+i-1] != arr[j])
+                        {
+                            falsePos2[j] = false;
+                            falsePos[j] = false;
+                            visited[j] = true;
+                        }
+                        continue;
+                    }
+                    if(arr[j+i-1] != arr[j])
+                    {
+                        falsePos2[j] = true;
+                        total++;
+                    }
+                    continue;
+                }
+                */
+                
+                int g = 0, h = 0;
                 boolean flag = false;
                 for(int k=0; k<i; k++)
                 {
@@ -33,17 +64,25 @@ public class lonely {
                     {
                         flag = true;
                         break;
-                    }     
-                    if(!flag)
-                    {
-                        total++;
-                        flag2 = false;
-                    }  
-                }     
-                if(flag2)
+                    }      
+                } 
+                if(g > 2 && h == 0 ||  h > 2 && g == 0)
                 {
-                    break;
+                    flag = true;
+                    falsePos[j] = true;
                 }
+                if(!flag)
+                {
+                    total++;
+                    flag2 = false;
+                }else if(falsePos[j] == false){
+                    visited[j] = true;
+                }     
+                
+            }
+            if(flag2)
+            {
+                break;
             }
         }
 
