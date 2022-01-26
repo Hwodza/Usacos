@@ -19,7 +19,8 @@
         {
             "name": "for_each",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Fact4"
             ],
             "defines": [
                 "_DEBUG",
