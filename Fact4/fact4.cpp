@@ -14,65 +14,37 @@ using namespace std;
 int main(){
     ifstream fin ("fact4.in");
     ofstream fout ("fact4.out");
-    /*
-    int n;
-    fin >> n;
-    int fact = 1;
-    for(int i=1; i<=n; i++)
-    {
-        fact *= i;
-        int temp = fact%10;
-        while(temp == 0)
-        {
-            if(fact == 0)
-            {
-                cout << "here " << i << endl;
-                break;
-            }
-            fact /= 10;
-            temp = fact%10;
-        }
-        fact %= 10;
-    }*/
 
-    
     int n;
     fin >> n;
     int fact = 1; 
     int num2 = 0, num5 = 0;
     for(int i=1; i<=n; i++)
     {
-        int temp = i;
-        
-        temp %= 10;
-        if(temp == 0 || temp == 1)
+        int temp = i%10;
+        if(i%10 == 0)
         {
             continue;
-        }
-        if(temp == 2)
+        }else if(fact%5 == 0 && fact%2 == 0)
         {
-            num2++;
-            continue;
-        }else if(temp == 5)
+            fact = fact/2;
+        }else if(fact%5 == 0 && fact%2 == 1)
         {
-            num5++;
-            continue;
+            fact = 5;
+        }else{
+            fact *= i;
         }
         while(fact%10 == 0)
         {
             fact /= 10;
         }
-        fact %= 10;
-        cout << "fact " << fact << " i " << temp << endl;
-        fact *= temp;
-        
     }
     while(fact%10 == 0)
     {
         fact /= 10;
     }
     cout << "here2 " << fact << endl;
-    fact %=10;
+    //fact %=10;
     
     if(num2 >= 1)
     {
@@ -91,7 +63,7 @@ int main(){
         }
     }*/
     
-    fact%=10;
+    //fact%=10;
     //cout << "here\n";
     fout << fact << '\n';
     cout << fact << '\n';
