@@ -42,11 +42,6 @@ int main(){
     int num2 = 0, num5 = 0;
     for(int i=1; i<=n; i++)
     {
-        
-        while(fact%10 == 0)
-        {
-            fact /= 10;
-        }
         int temp = i;
         
         temp %= 10;
@@ -63,6 +58,10 @@ int main(){
             num5++;
             continue;
         }
+        while(fact%10 == 0)
+        {
+            fact /= 10;
+        }
         fact %= 10;
         cout << "fact " << fact << " i " << temp << endl;
         fact *= temp;
@@ -78,7 +77,7 @@ int main(){
     if(num2 >= 1)
     {
         cout << "here " << fact << endl;
-        int temp = (num2-num5+1)%4;
+        int temp = (num2-num5)%5;
         temp = pow(2, temp);
         temp %= 10;
         fact *= temp;
