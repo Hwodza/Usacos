@@ -5,7 +5,10 @@
         "Monthlies\\December 2021\\air",
         "Monthlies\\December 2021\\Walking"
     ],
+<<<<<<< HEAD
     "C_Cpp.errorSquiggles": "Disabled",
+=======
+>>>>>>> 7284af28efbe0530a8c33782c03eb4209d652c6a
     "files.associations": {
         "*.COBOL*": "cobol",
         "*.COB*": "cobol",
@@ -21,6 +24,11 @@
         "*.ASSEMBLE*": "hlasm",
         "*.HLASM*": "hlasm",
         "*.HLA*": "hlasm",
+<<<<<<< HEAD
         "iosfwd": "cpp"
+=======
+        "iosfwd": "cpp",
+        "iostream": "cpp"
+>>>>>>> 7284af28efbe0530a8c33782c03eb4209d652c6a
     }
 }
