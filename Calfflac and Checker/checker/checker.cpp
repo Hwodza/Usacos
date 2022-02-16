@@ -29,18 +29,27 @@ int tempn = 0;
 int *pn = &tempn;
 bool rows[13] = {0}; //False = empty, True = full
 int placement[13]; 
-
+bool** diags = new bool*[2];
 
 void placequeen(int column){
     if(column == *pn){
-        //Do something
+        for(int i=0; i<*pn; i++){
+            cout << placement[i] << " ";
+        }
+        cout << endl;
+        return;
     }
     for(int row=0; row<*pn; row++){
         //Do something
         if(!rows[row]){
             rows[row] = true;
+            diags[0][-1*row+column + 5] = false;
+            diags[1][row+column] = false;
             placement[column] = row;
+            placequeen(column+1);
             rows[row] = false;
+            diags[0][-1*row+column + 5] = true;
+            diags[1][row+column] = true;
         }
     }
 }
@@ -51,6 +60,9 @@ int main(){
     ifstream fin ("checker.in");
     int n; fin >> n;
     *pn = n;
+    diags[0] = new bool[n*2-1]; //Top left to bottom right diagonal check
+    diags[1] = new bool[n*2-1]; //Top right to bottom left diagonal check
+    placequeen(0);
     cout << *pn << "\n";
     return 0;
 }
