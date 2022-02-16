@@ -41,15 +41,16 @@ void placequeen(int column){
     }
     for(int row=0; row<*pn; row++){
         //Do something
-        if(!rows[row]){
+        
+        if(!rows[row]&&!diags[0][-1*row+column+5]&&!diags[1][row+column]){
             rows[row] = true;
-            diags[0][-1*row+column + 5] = false;
-            diags[1][row+column] = false;
-            placement[column] = row;
-            placequeen(column+1);
-            rows[row] = false;
             diags[0][-1*row+column + 5] = true;
             diags[1][row+column] = true;
+            placement[row] = column+1;
+            placequeen(column+1);
+            rows[row] = false;
+            diags[0][-1*row+column + 5] = false;
+            diags[1][row+column] = false;
         }
     }
 }
@@ -62,6 +63,8 @@ int main(){
     *pn = n;
     diags[0] = new bool[n*2-1]; //Top left to bottom right diagonal check
     diags[1] = new bool[n*2-1]; //Top right to bottom left diagonal check
+    memset(diags[0], false, sizeof(diags[0]));
+    memset(diags[1], false, sizeof(diags[1]));
     placequeen(0);
     cout << *pn << "\n";
     return 0;
