@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class air {
     public static void main(String[] args)
     {
+        System.out.println((-3)%26);
+        /*
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
         scan.nextLine();
@@ -87,6 +89,6 @@ public class air {
             }
         }
         System.out.println(total);
-        scan.close();
+        scan.close();*/
     }
 }

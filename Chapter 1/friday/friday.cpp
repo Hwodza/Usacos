@@ -15,13 +15,14 @@ int main(){
     ifstream fin ("friday.in");
 
     int n; fin >> n;
-    int days[7] = {3, 0, 1, 3, 1, 2, 2};
-    int start[12] = {0, 3, 3, 6, 0, 4, 6, 2, 5, 0, 3, 5}; //Saturday:0, Sunday:1, Monday:2, Tuesday:3, Wednesday:4, Thursday:5, Friday:6
+    int days[7] = {2, 1, 1, 3, 1, 2, 2};//days[0] is num of 13ths for sat 
+    //Days of the week each 13th is on
+    int start[12] = {0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};//Saturday:0, Sunday:1, Monday:2, Tuesday:3, Wednesday:4, Thursday:5, Friday:6 
     int year = 1900;
     int month = 0;
     for(int i=0; i<n-1; i++)
     {
-        year ++;
+        ++year;
         int add = 1;
         if(year%4 == 0)
         {
@@ -31,9 +32,7 @@ int main(){
                 {
                     add = 2;
                 }
-            }
-            else
-            {
+            }else{
                 add = 2;
             }
         }
@@ -44,14 +43,15 @@ int main(){
             {
                 if(start[j] == k)
                 {
-                    days[k] ++;
+                    ++days[k];
                 }
             }
         }
     }
-    for(int i=0; i<7; i++)
+    fout << days[0];
+    for(int i=1; i<7; i++)
     {
-        fout << days[i] << " ";
+        fout << " " << days[i];
     }
     fout << endl;
 }
