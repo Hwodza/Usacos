@@ -25,13 +25,44 @@ using namespace std;
 
 ofstream fout ("checker.out");
 //Global Variables
+int tempn = 0;
+int *pn = &tempn;
+bool rows[13] = {0}; //False = empty, True = full
+int placement[13]; 
 
+
+void placequeen(int column){
+    if(column == *pn){
+        //Do something
+    }
+    for(int row=0; row<*pn; row++){
+        //Do something
+        if(!rows[row]){
+            rows[row] = true;
+            placement[column] = row;
+            rows[row] = false;
+        }
+    }
+}
+
+
+int main(){
+    
+    ifstream fin ("checker.in");
+    int n; fin >> n;
+    *pn = n;
+    cout << *pn << "\n";
+    return 0;
+}
+
+/*
 bool** outer = new bool*[3];
 int** ptorder = new int*[1];
 int temp = 0;
 int* p = &temp;
 
 void placequeen(int column){
+    
     if(column == *p){
         for(int i=0; i<*p; i++){
             fout << ptorder[0][i]+1 << " ";
@@ -58,6 +89,7 @@ int main(){
     
     ifstream fin ("checker.in");
     int n; cin >> n;
+    
     *p = n;
     outer[0] = new bool[n]; //Row check
     outer[1] = new bool[n*2-1]; //Top left to bottom right diagonal check
@@ -68,4 +100,4 @@ int main(){
     ptorder[0] = new int[n];
     placequeen(0);
     return 0;
-}
+}*/
