@@ -14,13 +14,14 @@ for i in range(4):
     blocks.append(list(input()))
 
 def good(word, count):
-    if count == 3:
+    if count == len(word):
         return True
     for i in range(4):
         if word[count] in blocks[i] and canUse[i]:
             canUse[i] = False
             if good(word, count+1) == True:
                 return True
+            canUse[i] = True
     return False
     
 
