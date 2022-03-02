@@ -40,3 +40,18 @@ For the second test case, Elsie can change her log to 7 with 2 modifications.
 For the last test case, Elsie doesn’t need to perform any operations; the log already consists of equal entries.
 
 Problem credits: Jesse Choe
+
+
+nums = []
+total = 0
+
+def find(big, sum, index, add):
+    if sum + nums[index] >= big or add == len(nums)-2:
+        
+        nums[index+1] = sum
+        for i in range(add-1):
+            nums.pop(index+2+i)
+        return add
+    return find(big, sum+nums[index+add], index, add+1)
+
+total += find(nums[index+1], nums[index], index, 1)

@@ -6,17 +6,26 @@
 //SOURCES/HELPERS/HELPED    : Mr.H
 """
 
-
 t = int(input())
 for numruns in range(t):
     total = 0
     n = int(input())
-    nums = list(map(int, input().split()))
-    #print(nums)
+    nums2 = list(map(int, input().split()))
+    if n == 1:
+        print(0)
+        continue
+    if n == 2:
+        if nums2[0] == nums2[1]:
+            print(0)
+        else:
+            print(1)
+        continue
+    nums = nums2.copy()
+
+    
+    
     a,b = 0,1
     while a<len(nums)-1 and b<len(nums):
-        #print(nums)
-        #print(f'{a} {b}')
         if nums[a]<nums[b]:
             while a>0 and b>1:
                 a-=1
@@ -26,7 +35,7 @@ for numruns in range(t):
             total+=1
             nums[a] += nums[b]
             nums.pop(b)
-            #print(f'nums: {nums}')
+            
             continue
         if nums[a]>nums[b]:
             while a<len(nums)-2 and b<len(nums)-1:
@@ -37,7 +46,8 @@ for numruns in range(t):
             total+=1
             nums[a] += nums[b]
             nums.pop(b)
-            #print(f'nums2: {nums}')
+            a -= 1
+            b -= 1
             continue
         a+=1
         b+=1
