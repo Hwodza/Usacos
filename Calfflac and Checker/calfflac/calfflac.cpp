@@ -20,125 +20,90 @@ bool check(char a)
 }
 
 int main() {
+    //I/O
     ofstream fout ("calfflac.out");
     ifstream fin ("calfflac.in");
-    string original, a, out;
-    while(getline(fin, a))
+    
+    //Holds the position of newlines
+    int lines[250];
+
+    //Temp string to read in each line
+    string s;
+    getline(fin,s);
+
+    //Total string
+    string all = "";
+    int counter{0};
+
+    //Read in each line
+    while(s != NULL)
     {
-        original += a + "\n";
-        for(int i=0; i<a.length(); i++)
-        {
-            char c = a[i];
-            a[i] = tolower(c);
-        }
-        out += a + "\n";
+        all += s;
+        lines[counter] = all.length();
+        ++counter;
+        getline(fin,s);
     }
-    int index, count = 0, countx, county;
-    bool flag = false;
-    for(int i=0; a.length(); i++)
+
+    //Lowercase copy
+    string lower = tolower(all);
+
+    //Finds first length
+    int length{2000};
+    if(length > all.length())
     {
-        if(flag)
+        length = all.length();
+    }
+
+    //Determines if first length is odd or even
+    bool odd{false};
+    if(length%2 != 0)
+    {
+        odd = true;
+    }
+
+    //Stores how large the palindrome is from each middle part
+    int middle[all.length()][2][2]{0}; //index, odd/even, a/b
+    int half{length/2};
+    int a{half-1};
+    int b{};
+    int index = half;
+    while(length > 0)
+    {
+        half = length/2;
+        a = half-1;
+        if(odd)
         {
-            break;
+            b = half+1;
+        }else{
+            b = half;
         }
-        if(count == a.length()-i)
+
+        //Adds to a and b to move down the string
+        int add{0};
+        while(b-a < length)
         {
-            break;
-        }
-        for(int k=0; k<=i; k++)
-        {
-            
-            int start = (a.length()-i)/2 + k;
-            if(k == 15)
+            while(!check(lower[a+add]))
             {
-                cout << original[start] << i << endl;
+                --a;
             }
-            int x=0, y=0, temp1=0, temp2=0, j=1;
-            while(j<start)
+            while(!check(lower[b+add]))
             {
-                bool check1 = check(a[start-j-x]);
-                bool check2 = check(a[start+j+y]);
-                if(check1 && check2)
-                {
-                    if(a[start-j-x] == a[start+j+y])
-                    {
-                        temp1++;
-                        x++;
-                        y++;
-                        j++;
-                        continue;
-                    }
-                    break;
-                }
-                if(!check1)
-                {
-                    x++;
-                }
-                if(!check2)
-                {
-                    y++;
-                }
+                ++b;
             }
-            j=0;
-            int x2=0,y2=0;
-            while(j<start)
+            if(lower[a+add] == lower[b+add])
             {
-                bool check1 = check(a[start-j-x2-1]);
-                bool check2 = check(a[start+j+y2]);
-                if(check1 && check2)
+                if(odd)
                 {
-                    if(a[start-j-x2-1] == a[start+j+y2])
-                    {
-                        temp2++;
-                        x2++;
-                        y2++;
-                        j++;
-                        continue;
-                    }
-                    break;
+                    middle[add+half][0][0] = a;
+                    middle[add+half][0][1] = b;
+                }else{
+                    middle[add+half][1][0] = a;
+                    middle[add+half][1][1] = b;
                 }
-                if(!check1)
-                {
-                    x2++;
-                }
-                if(!check2)
-                {
-                    y2++;
-                }
-            }
-            bool check3 = false;
-            if(temp1>temp2>count)
-            {
-                count = temp1;
-                index = start;
-                countx = x;
-                county = y;
-                check3 = true;
-                cout << "here" << i << endl;
-            }
-            if(temp2>=temp1>count)
-            {
-                count = temp2;
-                index = start;
-                countx = x2;
-                county = y2;
-                check3 = true;
-                cout << "here2" << i << endl;
-            }
-            if(check3 && count == a.length()-i)
-            {
+            }else{
                 break;
             }
         }
     }
-    int counter=index-countx+1;
-    cout << index << " " << count << " " << counter << " " << countx << " " << county << endl;
-    while(counter < index+county)
-    {
-        cout << original[counter];
-        fout << original[counter];
-        counter++;
-    }
-    cout << endl << endl << original << endl;
     return 0;
 }
