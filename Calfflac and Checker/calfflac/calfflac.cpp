@@ -37,10 +37,10 @@ int main() {
     int counter{0};
 
     //Read in each line
-    while(s)
+    while(fin)
     {
         all += s;
-        lines[counter] = all.length();
+        lines[counter] = all.length()-1;
         ++counter;
         getline(fin,s);
     }
@@ -68,7 +68,8 @@ int main() {
 
     //Stores how large the palindrome is from each middle part
     int middle[all.length()][2][2]{0}; //index, odd/even, a/b, add
-    int arr[all.length()]{0}; // add
+    int arr[all.length()][2]{0}; //add, odd/even
+    int total[all.length()][2]{0}; //length, odd/even
     int half{length/2};
     int a{half-1};
     int b{};
@@ -127,12 +128,15 @@ int main() {
                     
                     if(odd)
                     {
+                        total[add+half][0] += 2;
                         middle[add+half][0][0] = a;
                         middle[add+half][0][1] = b;
-                        arr[add+half] = add;
+                        arr[add+half][0] = add;
                     }else{
+                        total[add+half][1] += 2;
                         middle[add+half][1][0] = a;
                         middle[add+half][1][1] = b;
+                        arr[add+half][1] = add;
                     }
                     --a;
                     ++b;
@@ -152,15 +156,40 @@ int main() {
 
     if(odd2)
     {
-        a = middle[index][0][0] + arr[index];
-        b = middle[index][0][1] + arr[index];
-        cout << index << " " << middle[index][0][0] << " " << b << endl;
+        a = middle[index][0][0] + arr[index][0];
+        b = middle[index][0][1] + arr[index][0];
+        cout << index << " " << a << " " << b << endl;\
+        cout << total[index][0]+1 << '\n';
+        fout << total[index][0]+1 << '\n';
         int x{0};
         while(a > lines[x])
         {
             ++x;
         }
-        --x;
+        x;
+        for(a; a<=b; a++)
+        {
+            fout << all[a];
+            cout << all[a];
+            if(a == lines[x])
+            {
+                fout << endl;
+                cout << endl;
+                ++x;
+            }
+        }
+    }else{
+        a = middle[index][1][0] + arr[index][1];
+        b = middle[index][1][1] + arr[index][1];
+        cout << index << " " << middle[index][1][0] << " " << b << endl;
+        cout << total[index][1] << '\n';
+        fout << total[index][1] << '\n';
+        int x{0};
+        while(a > lines[x])
+        {
+            ++x;
+        }
+        x;
         for(a; a<=b; a++)
         {
             fout << all[a];
@@ -173,5 +202,6 @@ int main() {
             }
         }
     }
+    fout << endl;
     return 0;
 }
