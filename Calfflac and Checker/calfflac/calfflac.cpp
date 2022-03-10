@@ -4,13 +4,21 @@ TASK: calfflac
 LANG: C++                 
 */
 
+//NAME                      : Henry Odza
+//GROUP                     : AdvCS
+//LAST MODIFIED             : March 9, 2022
+//PROBLEM ID                : USACO Calfflac
+//Decription                : Given a very long string find the largest palindrome in it that is 
+//                          : 2000 characters or less in length.
+//SOURCES/HELPERS/HELPED    : Mr.H
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdio.h>
 using namespace std;
 
-
+//Method to check if its a valid character for palindrome
 bool check(char a)
 {   
     int b = int(a);
@@ -26,7 +34,7 @@ int main() {
     ifstream fin ("calfflac.in");
     
     //Holds the position of newlines
-    int lines[250];
+    int lines[300];
 
     //Temp string to read in each line
     string s;
@@ -125,7 +133,6 @@ int main() {
                 }
                 if(lower[a+add] == lower[b+add])
                 {
-                    
                     if(odd)
                     {
                         total[add+half][0] += 2;
@@ -144,8 +151,28 @@ int main() {
                     break;
                 }
             }
+            //Checks to see if a palindrome has been calculated for this middle
+            if(odd)
+            {
+                if(middle[add+half][0][1] - middle[add+half][0][0] == length-1)
+                {
+                    index = add+half;
+                    flag = false;
+                    break;
+                }
+            }else{
+                if(middle[add+half][1][1] - middle[add+half][1][0] == length-1)
+                {
+                    index = add+half;
+                    flag = false;
+                    odd2 = false;
+                    break;
+                }
+            }
+            
         }
         --length;
+        if(flag){}
         if(odd)
         {
             odd = false;
@@ -156,6 +183,7 @@ int main() {
 
     if(odd2)
     {
+        //Print out the palindrome for odd lengths
         a = middle[index][0][0] + arr[index][0];
         b = middle[index][0][1] + arr[index][0];
         cout << index << " " << a << " " << b << endl;\
@@ -166,12 +194,11 @@ int main() {
         {
             ++x;
         }
-        x;
         for(a; a<=b; a++)
         {
             fout << all[a];
             cout << all[a];
-            if(a == lines[x])
+            if(a == lines[x] && a!=b)
             {
                 fout << endl;
                 cout << endl;
@@ -179,6 +206,7 @@ int main() {
             }
         }
     }else{
+        //Print out the palindrome for even lengths
         a = middle[index][1][0] + arr[index][1];
         b = middle[index][1][1] + arr[index][1];
         cout << index << " " << middle[index][1][0] << " " << b << endl;
@@ -189,7 +217,6 @@ int main() {
         {
             ++x;
         }
-        x;
         for(a; a<=b; a++)
         {
             fout << all[a];
