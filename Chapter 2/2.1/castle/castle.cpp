@@ -23,47 +23,52 @@ using namespace std;
 
 bool walls[50][50][2][2] = {false}; //False is no wall, 00:North, 01:East, 10:South, 11:West
 bool visited[50][50] = {false};
-vector<int> roomsize;
+vector<int> roomsize; //Vector of room sizes
+vector<vector<vector<int>>> rooms; //Vector of every coordinate of every room
+vector<vector<int>> tempRooms; //Vector of coordinates of current room
 void dfs(int x, int y, int roomNum)
 {
+    //cout << x << " " << y << endl;
     if(x < 0 || x >= 50 || y < 0 || y >= 50 || visited[x][y])
+    {
         cout << "ERROR" << endl;
         return;
-    
-    cout << x << " " << y << endl;
+    }
+    vector<int> temp = {x,y};
+    tempRooms.push_back(temp);
     visited[x][y] = true;
     roomsize[roomNum]++;
-    if(!(walls[x][y][0][0]))
+    if(!(walls[x][y][1][1]))
     {
         if(!visited[x][y-1])
         {
-            cout << "NORTH" << endl;
+            //cout << "WEST" << endl;
+
             dfs(x,y-1,roomNum);
-        }
-    }
-    if(!(walls[x][y][0][1]))
-    {
-        cout << "here" << endl;
-        if(!visited[x+1][y])
-        {
-            cout << "EAST" << endl;
-            dfs(x+1,y,roomNum);
         }
     }
     if(!(walls[x][y][1][0]))
     {
-        if(!visited[x][y+1])
+        if(!visited[x+1][y])
         {
-            cout << "SOUTH" << endl;
-            dfs(x,y+1,roomNum);
+            //cout << "SOUTH" << endl;
+            dfs(x+1,y,roomNum);
         }
     }
-    if(!(walls[x][y][1][1]))
+    if(!(walls[x][y][0][0]))
     {
         if(!visited[x-1][y])
         {
-            cout << "WEST" << endl;
+            //cout << "NORTH" << endl;
             dfs(x-1,y,roomNum);
+        }
+    }
+    if(!(walls[x][y][0][1]))
+    {
+        if(!visited[x][y+1])
+        {
+            //cout << "EAST" << endl;
+            dfs(x,y+1,roomNum);
         }
     }
 }
@@ -123,28 +128,39 @@ int main(){
         }
     }
     //Call dfs algorithm
-    for(int x=0; x<height; x++)
+    for(int y=0; y<width; y++)
     {
-        for(int y=0; y<width; y++)
+        for(int x=height-1; x>=0; x--)
         {
             if(!visited[x][y])
             {
-                //visited[x][y] = true;
+                vector<int> temp = {x,y};
+                tempRooms.push_back(temp);
                 roomsize.push_back(0);
                 dfs(x,y,roomsize.size()-1);
+                rooms.push_back(tempRooms);
+                tempRooms.clear();
             }
         }
     }
     cout << roomsize.size() << endl;
-    int largest = 0;
-    for(int i=0; i<roomsize.size(); i++)
+    for(int i=0; i<roomsize.size()-1; i++)
     {
-        if(roomsize[i] > largest)
+        for(int j=0; j<roomsize.size()-1-i; j++)
         {
-            largest = roomsize[i];
+            if(roomsize[j] < roomsize[j+1])
+            {
+                int temp = roomsize[j];
+                roomsize[j] = roomsize[j+1];
+                roomsize[j+1] = temp;
+                vector<vector<int>> temp2 = rooms[j];
+                rooms[j] = rooms[j+1];
+                rooms[j+1] = temp2;
+            }
         }
     }
-    cout << largest << endl;
+    cout << roomsize[0] << endl;
+    
     fin.close();
     return 0;
 }
