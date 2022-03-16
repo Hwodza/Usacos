@@ -28,6 +28,7 @@ vector<vector<vector<int>>> rooms; //Vector of every coordinate of every room
 vector<vector<int>> tempRooms; //Vector of coordinates of current room
 void dfs(int x, int y, int roomNum)
 {
+    
     //cout << x << " " << y << endl;
     if(x < 0 || x >= 50 || y < 0 || y >= 50 || visited[x][y])
     {
