@@ -160,6 +160,13 @@ int main(){
             }
         }
     }
+    for(int i=1; i<roomsize.size(); i++)
+    {
+        for(j = 0; j<i; j++)
+        {
+            //Go through each room and see if it connect, starting on bottom left
+        }
+    }
     cout << roomsize[0] << endl;
     
     fin.close();
