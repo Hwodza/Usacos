@@ -7,12 +7,12 @@ LANG: C++
 
 //NAME                      : Henry Odza
 //GROUP                     : AdvCS
-//LAST MODIFIED             : January 8, 2022
+//LAST MODIFIED             : February 23, 2022
 //PROBLEM ID                : USACO Mother's Milk 
 //Decription                : Determines what amounts of milk he can leave inbucket C
 //                          : when he begins with three buckets, pours milk among the 
 //                          : buckets for a while, and then notes that bucket A is empty.
-//SOURCES/HELPERS/HELPED    : Mr.H
+//SOURCES/HELPERS/HELPED    : Mr.H, Ben Whitsett
 
 
 #include <iostream>
@@ -26,13 +26,16 @@ using namespace std;
 ofstream fout ("checker.out");
 //Global Variables
 int n;
-bool rows[13] = {0}; //False = empty, True = full
+bool rows[13]; //False = empty, True = full
 int placement[13]; 
 bool** diags = new bool*[2];
+bool ldiags[25]; //Top left to bottom right diagonal check
+bool rdiags[25]; //Top right to bottom left diagonal check
 int total{0};
 int printed{0};
 
 void placequeen(int column){
+	//Checks to see if is a final solution
     if(column == n){
         if(printed > 2)
         {
@@ -49,17 +52,16 @@ void placequeen(int column){
         return;
     }
     for(int row=0; row<n; ++row){
-        //Do something
-        
-        if(!rows[row]&&!diags[0][-1*row+column+5]&&!diags[1][row+column]){
+        //Checks rows and diags and then places new queen
+        if(!rows[row]&&!ldiags[-1*row+column+13]&&!rdiags[row+column]){
             rows[row] = true;
-            diags[0][-1*row+column + 5] = true;
-            diags[1][row+column] = true;
+            ldiags[-1*row+column + 13] = true;
+            rdiags[row+column] = true;
             placement[column] = row+1;
             placequeen(column+1);
             rows[row] = false;
-            diags[0][-1*row+column + 5] = false;
-            diags[1][row+column] = false;
+            ldiags[-1*row+column + 13] = false;
+            rdiags[row+column] = false;
         }
     }
 }
@@ -69,11 +71,8 @@ int main(){
     
     ifstream fin ("checker.in");
     fin >> n;
-    diags[0] = new bool[n*2-1]; //Top left to bottom right diagonal check
-    diags[1] = new bool[n*2-1]; //Top right to bottom left diagonal check
-    memset(diags[0], false, sizeof(diags[0]));
-    memset(diags[1], false, sizeof(diags[1]));
-    placequeen(0);
+	
+	placequeen(0);
     fout << total << '\n';
     return 0;
 }
