@@ -23,6 +23,7 @@ using namespace std;
 
 bool walls[50][50][2][2] = {false}; //False is no wall, 00:North, 01:East, 10:South, 11:West
 bool visited[50][50] = {false};
+int findroom[50][50] = {0};
 vector<int> roomsize; //Vector of room sizes
 vector<vector<vector<int>>> rooms; //Vector of every coordinate of every room
 vector<vector<int>> tempRooms; //Vector of coordinates of current room
@@ -35,7 +36,8 @@ void dfs(int x, int y, int roomNum)
         cout << "ERROR" << endl;
         return;
     }
-    vector<int> temp = {x,y};
+    vector<int> temp = {x,y,roomNum};
+    findroom[x][y] = roomNum;
     tempRooms.push_back(temp);
     visited[x][y] = true;
     roomsize[roomNum]++;
@@ -128,6 +130,14 @@ int main(){
             }
         }
     }
+    for(int y=0; y<width; y++)
+    {
+        for(int x=height-1; x>=0; x--)
+        {
+            cout << input[x][y] << " ";
+        }
+        cout << endl;
+    }
     //Call dfs algorithm
     for(int y=0; y<width; y++)
     {
@@ -135,9 +145,10 @@ int main(){
         {
             if(!visited[x][y])
             {
-                vector<int> temp = {x,y};
-                tempRooms.push_back(temp);
                 roomsize.push_back(0);
+                findroom[x][y] = roomsize.size()-1;
+                vector<int> temp = {x,y,roomsize.size()-1};
+                tempRooms.push_back(temp);
                 dfs(x,y,roomsize.size()-1);
                 rooms.push_back(tempRooms);
                 tempRooms.clear();
@@ -145,6 +156,7 @@ int main(){
         }
     }
     cout << roomsize.size() << endl;
+    // for(int x=0; x<width; x++)
     for(int i=0; i<roomsize.size()-1; i++)
     {
         for(int j=0; j<roomsize.size()-1-i; j++)
@@ -160,13 +172,7 @@ int main(){
             }
         }
     }
-    for(int i=1; i<roomsize.size(); i++)
-    {
-        for(j = 0; j<i; j++)
-        {
-            //Go through each room and see if it connect, starting on bottom left
-        }
-    }
+    
     cout << roomsize[0] << endl;
     
     fin.close();
