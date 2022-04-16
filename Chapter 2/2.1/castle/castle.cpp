@@ -27,6 +27,8 @@ int findroom[50][50] = {0};
 vector<int> roomsize; //Vector of room sizes
 vector<vector<vector<int>>> rooms; //Vector of every coordinate of every room
 vector<vector<int>> tempRooms; //Vector of coordinates of current room
+
+//Function to find the size of a room
 void dfs(int x, int y, int roomNum)
 {
     
@@ -155,6 +157,7 @@ int main(){
             }
         }
     }
+    //Outputs number of rooms
     cout << roomsize.size() << endl;
     fout << roomsize.size() << endl;
     for(int y=0; y<width; y++)
@@ -165,10 +168,13 @@ int main(){
         }
         cout << endl;
     }
+
+    //Finds the largest room by breaking a single wall
     int largest = 0;
     int wall[3] = {0}; //0:x, 1:y, 2:direction(0:North, 1:East)
     for(int y=0; y<width-1; y++)
     {
+        //Breaks the northern wall
         for(int x=height-1; x>=1; x--)
         {
             if(findroom[x][y] != findroom[x-1][y])
@@ -183,6 +189,7 @@ int main(){
                 }
             }
         }
+        //Breaks the eastern wall
         for(int x=height-1; x>=0; x--)
         {
             if(findroom[x][y] != findroom[x][y+1])
@@ -198,6 +205,7 @@ int main(){
             }
         }
     }
+    //Breaks the final set of northern walls
     int y = width-1;
     for(int x=height-1; x>=1; x--)
         {
@@ -213,6 +221,8 @@ int main(){
                 }
             }
         }
+    
+    //Sorts the rooms by size to find largest
     for(int i=0; i<roomsize.size()-1; i++)
     {
         for(int j=0; j<roomsize.size()-1-i; j++)
@@ -229,6 +239,8 @@ int main(){
         }
     }
     
+
+    //Prints largest room with and without breaking a wall, and the wall that was broken
     cout << roomsize[0] << endl;
     cout << largest << endl;
     fout << roomsize[0] << endl;
