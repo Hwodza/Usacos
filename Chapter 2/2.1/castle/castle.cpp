@@ -156,7 +156,63 @@ int main(){
         }
     }
     cout << roomsize.size() << endl;
-    // for(int x=0; x<width; x++)
+    fout << roomsize.size() << endl;
+    for(int y=0; y<width; y++)
+    {
+        for(int x=height-1; x>=0; x--)
+        {
+            cout << findroom[x][y] << " ";
+        }
+        cout << endl;
+    }
+    int largest = 0;
+    int wall[3] = {0}; //0:x, 1:y, 2:direction(0:North, 1:East)
+    for(int y=0; y<width-1; y++)
+    {
+        for(int x=height-1; x>=1; x--)
+        {
+            if(findroom[x][y] != findroom[x-1][y])
+            {
+                if(roomsize[findroom[x][y]] + roomsize[findroom[x-1][y]] > largest)
+                {
+                    largest = roomsize[findroom[x][y]] + roomsize[findroom[x-1][y]];
+                    wall[0] = x;
+                    wall[1] = y;
+                    wall[2] = 0;
+                    cout << "HERE " <<  x << " " << y << " " << wall[2] << endl;
+                }
+            }
+        }
+        for(int x=height-1; x>=0; x--)
+        {
+            if(findroom[x][y] != findroom[x][y+1])
+            {
+                if(roomsize[findroom[x][y]] + roomsize[findroom[x][y+1]] > largest)
+                {
+                    largest = roomsize[findroom[x][y]] + roomsize[findroom[x][y+1]];
+                    wall[0] = x;
+                    wall[1] = y;
+                    wall[2] = 1;
+                    cout << "HERE " <<  x << " " << y << " " << wall[2] << endl;
+                }
+            }
+        }
+    }
+    int y = width-1;
+    for(int x=height-1; x>=1; x--)
+        {
+            if(findroom[x][y] != findroom[x-1][y])
+            {
+                if(roomsize[findroom[x][y]] + roomsize[findroom[x-1][y]] > largest)
+                {
+                    largest = roomsize[findroom[x][y]] + roomsize[findroom[x-1][y]];
+                    wall[0] = x;
+                    wall[1] = y;
+                    wall[2] = 0;
+                    cout << "HERE " <<  x << " " << y << " " << wall[2] << endl;
+                }
+            }
+        }
     for(int i=0; i<roomsize.size()-1; i++)
     {
         for(int j=0; j<roomsize.size()-1-i; j++)
@@ -174,7 +230,12 @@ int main(){
     }
     
     cout << roomsize[0] << endl;
-    
+    cout << largest << endl;
+    fout << roomsize[0] << endl;
+    fout << largest << endl;
+    string walldir = (wall[2] == 0)? "N" : "E";
+    cout << wall[0]+1 << " " << wall[1]+1 << " " << walldir << endl;
+    fout << wall[0]+1 << " " << wall[1]+1 << " " << walldir << endl;
     fin.close();
     return 0;
 }
